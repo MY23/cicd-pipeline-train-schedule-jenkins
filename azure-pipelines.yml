@@ -37,18 +37,18 @@ steps:
     ArtifactName: "trainSchedule"
     PathtoPublish: '$(System.DefaultWorkingDirectory)/dist/'
 
-- task: DownloadPipelineArtifact@2
-  displayName: 'Download Pipeline Artifact'
-  inputs:
-      source: 'current'
-      artifact: 'drop'
-      path: '$(System.DefaultWorkingDirectory)/dist/'
-  
-- task: CopyFilesOverSSH@0
-  displayName: 'Deploy Artifact to the remote machine'
-  inputs:
-    sshEndpoint: StagingServer
-    sourceFolder: '$(System.DefaultWorkingDirectory)/dist/'
-    targetFolder: '/opt/train-schedule'
-    cleanTargetFolder: true
-    failOnEmptySource: true
+#- task: DownloadPipelineArtifact@2
+#  displayName: 'Download Pipeline Artifact'
+#  inputs:
+#      source: 'current'
+#      artifact: 'drop'
+#      path: '$(System.DefaultWorkingDirectory)/dist/'
+#  
+#- task: CopyFilesOverSSH@0
+#  displayName: 'Deploy Artifact to the remote machine'
+#  inputs:
+#    sshEndpoint: StagingServer
+#    sourceFolder: '$(System.DefaultWorkingDirectory)/dist/'
+#    targetFolder: '/opt/train-schedule'
+#    cleanTargetFolder: true
+#    failOnEmptySource: true
