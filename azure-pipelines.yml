@@ -31,7 +31,7 @@ steps:
     replaceExistingArchive: true
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
 - task: PublishBuildArtifacts@1
-displayName: 'Publish Build Artifacts'
+  displayName: 'Publish Build Artifacts'
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
     ArtifactName: "trainSchedule"
