@@ -31,7 +31,23 @@ steps:
     replaceExistingArchive: true
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
 - task: PublishBuildArtifacts@1
+displayName: 'Publish Build Artifacts'
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
     ArtifactName: "trainSchedule"
     PathtoPublish: '$(System.DefaultWorkingDirectory)/dist/'
+
+- task: DownloadPipelineArtifact@2
+  displayName: 'Download Pipeline Artifact'
+  inputs:
+      source: 'current'
+      artifact: 'drop'
+      path: '$(Pipeline.Workspace)'
+  
+- task: AzureWebApp@1
+  displayName: 'Deploy Artifact'
+  inputs:
+    azureSubscription: 'staging'
+    appType: webApp
+    appName: 'trainSchedule'
+    package: '$(Pipeline.Workspace)/**/*.zip'
