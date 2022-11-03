@@ -21,6 +21,16 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
+
+- task: ArchiveFiles@2
+  displayName: 'Train Schedule Archive'
+  inputs:
+    archiveType: zip
+    archiveFile: '$(Pipeline.workspace)/dist/trainSchedule.zip'
+    includeRootFolder: false
+    replaceExistingArchive: true
+    rootFolderOrFile: '$(Pipeline.workspace)'
 - task: PublishBuildArtifacts@1
   inputs:
     targetPath: '$(Pipeline.workspace)/dist/trainSchedule.zip'
+    ArtifactName: 'drop'
