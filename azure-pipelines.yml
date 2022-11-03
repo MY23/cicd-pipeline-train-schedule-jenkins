@@ -26,11 +26,11 @@ steps:
   displayName: 'Train Schedule Archive'
   inputs:
     archiveType: zip
-    archiveFile: '$(Pipeline.workspace)/dist/trainSchedule.zip'
+    archiveFile: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
     includeRootFolder: false
     replaceExistingArchive: true
-    rootFolderOrFile: '$(Pipeline.workspace)'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
-    targetPath: '$(Pipeline.workspace)/dist/trainSchedule.zip'
+    targetPath: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
     ArtifactName: 'drop'
