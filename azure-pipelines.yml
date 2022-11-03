@@ -33,4 +33,4 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
-    ArtifactName: 'drop'
+    ArtifactName: "trainSchedule"
