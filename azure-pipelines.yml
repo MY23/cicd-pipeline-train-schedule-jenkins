@@ -34,3 +34,4 @@ steps:
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
     ArtifactName: "trainSchedule"
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/dist/'
