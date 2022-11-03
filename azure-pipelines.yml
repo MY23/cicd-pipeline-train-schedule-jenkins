@@ -42,7 +42,7 @@ steps:
   inputs:
       source: 'current'
       artifact: 'drop'
-      path: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
+      path: '$(System.DefaultWorkingDirectory)/dist/'
   
 - task: CopyFilesOverSSH@0
   displayName: 'Deploy Artifact to the remote machine'
