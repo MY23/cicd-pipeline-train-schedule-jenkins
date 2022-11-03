@@ -24,5 +24,3 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     targetPath: '$(Pipeline.workspace)/dist/trainSchedule.zip'
-    ArtifactName: "trainSchedule"
-    publishLocation: 'FilePath'
