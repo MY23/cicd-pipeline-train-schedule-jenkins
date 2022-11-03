@@ -37,6 +37,31 @@ steps:
     ArtifactName: "trainSchedule"
     PathtoPublish: '$(System.DefaultWorkingDirectory)/dist/'
 
+- task: CmdLine@2
+  displayName: 'Stop train-schedule service'
+  inputs:
+    script: 'sudo /usr/bin/systemctl stop train-schedule'
+
+- task: CopyFiles@2
+  displayName: 'Copy zip file'
+  inputs:
+   SourceFolder: '$(System.DefaultWorkingDirectory)/dist/'
+   Contents: "trainSchedule.zip"
+   TargetFolder: '/tmp'
+   cleanTargetFolder: false
+   ignoreMakeDirErrors: false
+
+- task: ExtractFiles@1
+  displayName: 'Extract project files'
+  inputs:
+    archiveFilePatterns: '/tmp/trainSchedule.zip' 
+    destinationFolder: '/opt/train-schedule'
+
+- task: CmdLine@2
+  displayName: 'Start train-schedule service'
+  inputs:
+    script: 'sudo /usr/bin/systemctl start train-schedule'
+
 #- task: DownloadPipelineArtifact@2
 #  displayName: 'Download Pipeline Artifact'
 #  inputs:
