@@ -57,10 +57,10 @@ steps:
     archiveFilePatterns: '/tmp/trainSchedule.zip' 
     destinationFolder: '/opt/train-schedule'
 
-- task: CmdLine@2
-  displayName: 'Start train-schedule service'
-  inputs:
-    script: 'sudo /usr/bin/systemctl start train-schedule'
+#- task: CmdLine@2
+#  displayName: 'Start train-schedule service'
+#  inputs:
+#    script: 'sudo /usr/bin/systemctl start train-schedule'
 
 #- task: DownloadPipelineArtifact@2
 #  displayName: 'Download Pipeline Artifact'
