@@ -21,7 +21,8 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
-- download: current
-  artifact: TrainSchedule
-  patterns: |
-    dist/trainSchedule.zip
+- task: PublishBuildArtifacts@1
+  inputs:
+    targetPath: '$(Pipeline.workspace)/dist/trainSchedule.zip'
+    ArtifactName: "trainSchedule"
+    publishLocation: 'FilePath'
