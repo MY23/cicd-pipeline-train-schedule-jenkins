@@ -44,10 +44,11 @@ steps:
       artifact: 'drop'
       path: '$(Pipeline.Workspace)'
   
-- task: AzureWebApp@1
-  displayName: 'Deploy Artifact'
+- task: CopyFilesOverSSH@0
+  displayName: 'Deploy Artifact to the remote machine'
   inputs:
-    azureSubscription: 'staging'
-    appType: webApp
-    appName: 'trainSchedule'
-    package: '$(Pipeline.Workspace)/**/*.zip'
+    sshEndpoint: StagingServer
+    sourceFolder: '$(System.DefaultWorkingDirectory)/dist/'
+    targetFolder: '/opt/train-schedule'
+    cleanTargetFolder: true
+    failOnEmptySource: true
